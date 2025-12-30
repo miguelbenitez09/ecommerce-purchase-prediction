@@ -47,7 +47,7 @@ data/01_raw/*.csv
 data/02_processed/*.csv
 data/02_processed/*.npy
 
-# Models (archivos grandes)
+# Models (archivos grandes - usuarios deben entrenar localmente)
 models/*.pkl
 !models/.gitkeep
 

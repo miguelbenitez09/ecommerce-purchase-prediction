@@ -801,6 +801,35 @@ docker-compose down
 
 ## 💻 Uso
 
+### ⚠️ IMPORTANTE: Entrenar Modelos Primero
+
+**Los modelos pre-entrenados NO están incluidos en el repositorio**. Debes entrenarlos localmente antes de usar la API o el dashboard.
+
+#### Entrenar con Notebooks (Recomendado)
+```bash
+# 1. Activar entorno virtual
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+
+# 2. Instalar dependencias
+pip install pandas numpy scikit-learn xgboost lightgbm catboost matplotlib seaborn jupyter
+
+# 3. Iniciar Jupyter y ejecutar notebooks en orden:
+jupyter notebook
+
+# Ejecutar en orden:
+# ├── 01_exploracion_dataset.ipynb     (EDA)
+# ├── 02_preprocesamiento_dataset.ipynb (Limpieza)
+# └── 03_modelado_dataset.ipynb        (ENTRENAMIENTO) ⭐
+```
+
+**El notebook `03_modelado_dataset.ipynb` guardará los modelos en `models/`**:
+- `best_model.pkl` - Modelo CatBoost optimizado
+- `scaler.pkl` - Escalador de features
+- `model_info.pkl` - Metadatos del modelo
+
+---
+
 ### 1. Ejecutar Notebooks de Análisis
 
 ```bash
