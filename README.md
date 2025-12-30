@@ -760,6 +760,25 @@ cd web
 pip install -r requirements.txt
 ```
 
+#### 4. Descargar Datos desde Kaggle
+
+**⚠️ Los archivos CSV NO están incluidos en el repositorio debido a su tamaño.**
+
+**Opción A: Descargar manualmente**
+1. Ir a: https://www.kaggle.com/datasets/henrysue/online-shoppers-intention
+2. Descargar el archivo: `online_shoppers_intention.csv`
+3. Colocar en: `data/01_raw/online_shoppers_intention.csv`
+
+**Opción B: Usar Kaggle API**
+```bash
+# Instalar Kaggle CLI
+pip install kaggle
+
+# Descargar dataset
+kaggle datasets download -d henrysue/online-shoppers-intention -p data/01_raw/
+unzip data/01_raw/online-shoppers-intention.zip -d data/01_raw/
+```
+
 ---
 
 ### Opción 2: Deployment con Docker (Recomendado) 🐳

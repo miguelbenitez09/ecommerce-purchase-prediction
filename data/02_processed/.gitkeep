@@ -1,0 +1,11 @@
+# Processed data files will be generated here after running preprocessing notebook
+
+Generated files:
+- processed_shoppers_data.csv
+- feature_names.txt
+- X_train.npy
+- X_train_balanced.npy
+- X_test.npy
+- y_train.npy
+- y_train_balanced.npy
+- y_test.npy
