@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # API Service
+  online-shoppers-api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: online_shoppers_api
+    ports:
+      - "8004:8000"
+    volumes:
+      - ../models:/app/models:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - shoppers_network
+
+  # Streamlit Web Interface
+  online-shoppers-web:
+    image: python:3.10-slim
+    container_name: online_shoppers_web
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements.txt && streamlit run app.py --server.port=8503 --server.address=0.0.0.0"
+    ports:
+      - "8503:8503"
+    volumes:
+      - ../web:/app
+      - ../models:/app/../models:ro
+      - ../data:/app/../data:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    networks:
+      - shoppers_network
+    depends_on:
+      online-shoppers-api:
+        condition: service_healthy
+
+networks:
+  shoppers_network:
+    driver: bridge
