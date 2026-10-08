@@ -116,15 +116,18 @@ Modelo predictivo que analiza en tiempo real:
 
 ---
 
-## 📊 Dataset
+## 📊 Dataset y Régimen de Acceso Abierto
 
-### Información General
-
-**Nombre**: Online Shoppers Purchasing Intention Dataset  
+**Nombre Oficial**: Online Shoppers Purchasing Intention Dataset  
 **Fuente**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset)  
 **Autores**: C. Sakar, Yomi Kastro (2018)  
+**Licencia**: Creative Commons Attribution 4.0 International (CC BY 4.0) — Libre para fines educativos, científicos y de benchmarking  
 **DOI**: [10.24432/C5F88Q](https://doi.org/10.24432/C5F88Q)  
-**Licencia**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+### Estrategia de Tratamiento de Datos y MLOps
+1. **Desbalance de Clases Crítico:** Solo el **15.5%** de las sesiones resultan en compra (`Revenue=True`). En analítica de e-commerce, optimizar por Accuracy simple es una trampa metodológica (un modelo naive que prediga siempre `False` obtendría 84.5% de exactitud con 0 valor de negocio). Se priorizó la optimización de **PR-AUC, F1-Score y Recall** para capturar al mayor porcentaje de compradores reales.
+2. **Transformación de Métricas de Navegación:** Tratamiento no lineal sobre `PageValues`, `BounceRates` y `ExitRates`, junto con codificación de variables categóricas de sesión (`VisitorType`, `Month`, `Weekend`) para modelos basados en árboles (CatBoost, LightGBM).
+3. **Política Zero Raw Bloat:** Pipeline desacoplado con API REST en FastAPI, interfaz Streamlit reactiva y Dockerfile optimizado para despliegue productivo.
 
 ### Estadísticas del Dataset
 
