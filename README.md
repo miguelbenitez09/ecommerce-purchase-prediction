@@ -42,9 +42,16 @@
 
 ---
 
-## 🎯 Descripción del Proyecto
+## 🎯 Descripción del Proyecto y Enfoque Académico UTP
 
-Este proyecto implementa un sistema completo de clasificación binaria para predecir si un visitante de una tienda online realizará una compra (`Revenue = True`) o no (`Revenue = False`) basándose en su comportamiento de navegación.
+Este proyecto constituye un **pipeline fundacional de extremo a extremo (E2E MLOps Lifecycle)** desarrollado para consolidar y demostrar las competencias troncales adquiridas durante la carrera de **Ingeniería en Sistemas y Computación en la Universidad Tecnológica de Panamá (UTP)**. 
+
+El sistema ejemplifica el ciclo completo de análisis predictivo sobre analítica web y embudos de conversión digital:
+1. **Analítica de Comportamiento Web:** Ingesta y comprensión de métricas de sesión (`BounceRates`, `ExitRates`, `PageValues`) y navegación administrativa, informativa y de producto.
+2. **Ingeniería de Características de Sesión:** Transformación de variables estacionales (mes de visita, tipo de visitante recurrente vs nuevo, fin de semana y sistema operativo).
+3. **Manejo de Desbalance Severo:** Solo el 15.5% de las sesiones terminan en transacción (`Revenue = True`). Se aplica **SMOTE** para balancear el espacio vectorial de entrenamiento.
+4. **Benchmarking Riguroso de 12 Algoritmos:** Evaluación comparativa sistemática entre modelos lineales, ensembles, boosting y máquinas de soporte vectorial con foco en **ROC-AUC (93.4%)**.
+5. **Ingeniería de Software para Producción:** Microservicio REST con FastAPI, validación Pydantic, contenedor Docker y dashboard interactivo en Streamlit.
 
 ### Objetivo Principal
 Predecir la intención de compra de visitantes en tiempo real para:
@@ -56,7 +63,7 @@ Predecir la intención de compra de visitantes en tiempo real para:
 ### Pipeline Completo
 ```
 Datos UCI → EDA → Limpieza → Feature Engineering → Balanceo (SMOTE) → 
-→ Modelado ML → Validación → API REST → Dashboard Web → Docker
+→ Modelado ML (12 Algoritmos) → Validación ROC-AUC → API REST → Dashboard Web → Docker
 ```
 
 ### Características del Sistema
